@@ -10,12 +10,10 @@ const useStyles = makeStyles(theme => ({
     height: "7rem",
     display: "flex",
     padding: 0,
-
     backgroundColor: "white",
   },
   main: {
     flexGrow: 10,
-
     fontFamily: "Staatliches, cursive",
     fontSize: "2.625rem",
   },
@@ -25,7 +23,6 @@ const useStyles = makeStyles(theme => ({
   link: {
     flexGrow: 1,
     marginLeft: theme.spacing(2),
-
     textDecoration: "none",
     fontFamily: "Open Sans, sans-serif",
     fontSize: "1.5rem",
