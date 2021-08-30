@@ -6,7 +6,7 @@ import "../styles/index.css"
 
 const Layout = props => {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl" style={{ marginLeft: "2.5vw", maxWidth: "95vw" }}>
       <Navigation />
       {props.children}
     </Container>

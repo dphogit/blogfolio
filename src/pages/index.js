@@ -1,21 +1,22 @@
 import React from "react"
-import { Grid, makeStyles, Typography } from "@material-ui/core"
+import { Grid, Grow, makeStyles, Slide, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
+import AvatarSVG from "../assets/avatar.svg"
 
 const useStyles = makeStyles(theme => ({
   background: {
     top: "13rem",
     height: "34rem",
-    width: "100vw",
+    width: "50vw",
     position: "absolute",
     zIndex: -1,
-    backgroundColor: "#22213C",
+    backgroundColor: "black",
+    opacity: 0.9,
   },
   introduction: {
-    marginTop: "7.5rem",
+    marginTop: "8rem",
   },
   name: {
     lineHeight: 1,
@@ -24,7 +25,6 @@ const useStyles = makeStyles(theme => ({
     color: "white",
   },
   description: {
-    marginTop: 0,
     width: "70%",
     lineHeight: "2rem",
     fontFamily: "Open Sans, sans-serif",
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "1.125rem",
     lineHeight: "150%",
     color: "rgba(255, 255, 255, 0.85)",
-    marginTop: "4.5rem",
+    marginTop: "4rem",
     width: "85%",
   },
   contactButton: {
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
   },
   imageGridItem: {
     height: "95vh",
-    marginTop: "-2.5rem",
+    marginTop: "-1.5rem",
   },
 }))
 
@@ -66,7 +66,7 @@ const HomePage = () => {
   const classes = useStyles()
 
   return (
-    <div style={{ height: "100vh" }}>
+    <>
       <Layout>
         <Grid
           spacing={5}
@@ -92,13 +92,26 @@ const HomePage = () => {
               Contact Me
             </Link>
           </Grid>
-          <Grid item lg={6} className={classes.imageGridItem}>
-            <StaticImage src="../images/bg-remove-crop.png" alt="profile" />
-          </Grid>
+          <Grow in={true} timeout={{ appear: 0, enter: 2000, exit: 1000 }}>
+            <Grid
+              item
+              lg={6}
+              className={classes.imageGridItem}
+              style={{ paddingBottom: 0 }}
+            >
+              <AvatarSVG style={{ height: "100%", width: "100%" }} />
+            </Grid>
+          </Grow>
         </Grid>
       </Layout>
-      <div className={classes.background} />
-    </div>
+      <Slide
+        direction="right"
+        in={true}
+        timeout={{ appear: 0, enter: 1000, exit: 0 }}
+      >
+        <div className={classes.background} />
+      </Slide>
+    </>
   )
 }
 
