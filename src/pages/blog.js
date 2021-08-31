@@ -1,17 +1,27 @@
 import React from "react"
-import { Typography } from "@material-ui/core"
-import { graphql, useStaticQuery, Link } from "gatsby"
-import { getSrc } from "gatsby-plugin-image"
+import {
+  Container,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
+import Slug from "../components/slug"
 
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
         edges {
           node {
             id
+            timeToRead
+            fields {
+              slug
+            }
             frontmatter {
               title
               date
@@ -19,12 +29,12 @@ const BlogPage = () => {
               indexImage {
                 name
                 childImageSharp {
-                  gatsbyImageData(width: 600)
+                  gatsbyImageData
+                  resize(height: 700) {
+                    aspectRatio
+                  }
                 }
               }
-            }
-            fields {
-              slug
             }
           }
         }
@@ -32,22 +42,27 @@ const BlogPage = () => {
     }
   `)
 
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down("lg"))
+
   return (
     <Layout>
-      <Typography variant="h1">Blog Page</Typography>
-      <Typography>This is my blog page!</Typography>
-      {data.allMarkdownRemark.edges.map(edge => {
-        const { frontmatter } = edge.node
-        const { indexImage } = frontmatter
-        return (
-          <Link to={`/blog/${edge.node.fields.slug}`} key={edge.node.id}>
-            <p>{frontmatter.date}</p>
-            <h5>{frontmatter.title}</h5>
-            <p>{frontmatter.blurb}</p>
-            <img src={getSrc(frontmatter.indexImage)} alt={indexImage.name} />
-          </Link>
-        )
-      })}
+      <Container maxWidth="lg">
+        <Typography
+          align="center"
+          variant="h1"
+          style={{ fontFamily: "Open-sans , sans-serif", margin: "1.5rem" }}
+        >
+          Posts
+        </Typography>
+        <Grid container spacing={matches ? 5 : 10}>
+          {data.allMarkdownRemark.edges.map(edge => (
+            <Grid key={edge.node.id} lg={6} md={4} item>
+              <Slug node={edge.node} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </Layout>
   )
 }
