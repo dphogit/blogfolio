@@ -1,10 +1,12 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Container } from "@material-ui/core"
+import { Container, Fab, Typography } from "@material-ui/core"
 
 import Layout from "../components/layout"
 import useStyles from "../styles/markdown"
+import ScrollTop from "../components/scroll-top"
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
 
 export const query = graphql`
   query ($slug: String!) {
@@ -18,6 +20,8 @@ export const query = graphql`
           }
           name
         }
+        imageCredit
+        imageCreditLink
       }
       html
     }
@@ -33,13 +37,28 @@ const BlogPost = props => {
   return (
     <Layout>
       <Container maxWidth="md" className={classes.markdown}>
+        <div className={classes.header}>
+          <Typography variant="h1" style={{ marginLeft: "-3px" }}>
+            {frontmatter.title}
+          </Typography>
+          <Typography>{frontmatter.date}</Typography>
+        </div>
         <GatsbyImage image={image} alt={frontmatter.indexImage.name} />
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.date}</p>
+        <Typography align="center" variant="caption">
+          {"Photo By: "}
+          <Link to={frontmatter.imageCreditLink}>
+            {frontmatter.imageCredit}
+          </Link>
+        </Typography>
         <div
           dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
-        ></div>
+        />
       </Container>
+      <ScrollTop {...props}>
+        <Fab color="secondary" aria-label="scroll back to top" size="large">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
     </Layout>
   )
 }

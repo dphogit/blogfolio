@@ -30,9 +30,6 @@ const BlogPage = () => {
                 name
                 childImageSharp {
                   gatsbyImageData
-                  resize(height: 700) {
-                    aspectRatio
-                  }
                 }
               }
             }
@@ -51,7 +48,7 @@ const BlogPage = () => {
         <Typography
           align="center"
           variant="h1"
-          style={{ fontFamily: "Open-sans , sans-serif", margin: "1.5rem" }}
+          style={{ fontFamily: "Open-sans , sans-serif", margin: "2.5rem" }}
         >
           Posts
         </Typography>

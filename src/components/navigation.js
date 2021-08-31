@@ -46,7 +46,7 @@ const Navigation = () => {
   const classes = useStyles()
 
   return (
-    <nav className={classes.root}>
+    <nav className={classes.root} id="nav-bar">
       <Toolbar className={classes.navigation}>
         <Typography variant="h6" className={classes.main}>
           <Link to="/" className={classes.mainLink}>
