@@ -1,32 +1,45 @@
-import { makeStyles } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
 
 const TEXT_FONT_SIZE = "1.375rem"
+const TEXT_FONT_SIZE_SMALL = "1rem"
 const RALEWAY = "Raleway, sans-serif"
 const OPEN_SANS = "Open Sans, sans-serif"
 
 /**
  * Styles for markdown content in blog posts
  */
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   markdown: {
     "& h1": {
       fontFamily: RALEWAY,
       fontSize: "3.75rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "2.5rem",
+      },
     },
 
     "& h2": {
       fontFamily: RALEWAY,
       fontSize: "2.5rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "2rem",
+      },
     },
 
     "& h3": {
       fontFamily: RALEWAY,
       fontSize: "2rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "1.5rem",
+      },
     },
 
     "& h4:": {
       fontFamily: RALEWAY,
       fontSize: "1.5rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "1rem",
+      },
     },
 
     "& h5:": {
@@ -48,11 +61,17 @@ const useStyles = makeStyles({
     "& li": {
       fontFamily: OPEN_SANS,
       fontSize: TEXT_FONT_SIZE,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: TEXT_FONT_SIZE_SMALL,
+      },
     },
 
     "& p": {
       fontFamily: OPEN_SANS,
       fontSize: TEXT_FONT_SIZE,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: TEXT_FONT_SIZE_SMALL,
+      },
     },
 
     "& a": {
@@ -67,6 +86,6 @@ const useStyles = makeStyles({
   header: {
     margin: "1rem 0",
   },
-})
+}))
 
 export default useStyles

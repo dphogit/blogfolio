@@ -40,8 +40,8 @@ const BlogPage = () => {
     <Layout>
       <Typography
         align="center"
-        variant="h1"
-        style={{ fontFamily: "Open-sans , sans-serif", margin: "2.5rem" }}
+        variant={matches ? "h3" : "h1"}
+        style={{ fontFamily: "Open-sans , sans-serif", margin: "2rem" }}
       >
         Posts
       </Typography>
