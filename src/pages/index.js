@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import AvatarSVG from "../assets/avatar.svg"
+import MobileHomeGraphic from "../components/mobile-home-graphic/mobile-home-graphic"
 
 const useStyles = makeStyles(theme => ({
   background: {
@@ -14,15 +15,27 @@ const useStyles = makeStyles(theme => ({
     zIndex: -1,
     backgroundColor: "black",
     opacity: 0.9,
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
   introduction: {
     marginTop: "8rem",
+    [theme.breakpoints.down("md")]: {
+      marginTop: 0,
+    },
   },
   name: {
     lineHeight: 1,
     fontFamily: "Staatliches, cursive",
     fontSize: "5.875rem",
     color: "white",
+    [theme.breakpoints.down("md")]: {
+      color: "black",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "3.75rem",
+    },
   },
   description: {
     width: "70%",
@@ -31,6 +44,15 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     fontSize: "1.375rem",
     color: "rgba(255, 255, 255, 0.75)",
+    [theme.breakpoints.down("md")]: {
+      color: "black",
+      opacity: 0.85,
+    },
+    [theme.breakpoints.down("sm")]: {
+      color: "black",
+      width: "100%",
+      fontSize: "1rem",
+    },
   },
   contactText: {
     fontFamily: "Open Sans, sans-serif",
@@ -39,6 +61,10 @@ const useStyles = makeStyles(theme => ({
     color: "rgba(255, 255, 255, 0.85)",
     marginTop: "4rem",
     width: "85%",
+    [theme.breakpoints.down("md")]: {
+      color: "black",
+      marginTop: "1rem",
+    },
   },
   contactButton: {
     height: "3.5rem",
@@ -55,10 +81,24 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       opacity: 0.8,
     },
+    [theme.breakpoints.down("md")]: {
+      backgroundColor: "#181818",
+      color: "rgba(255, 255, 255, 0.85)",
+    },
   },
   imageGridItem: {
     height: "95vh",
     marginTop: "-1.5rem",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
+  },
+  mobileGraphic: {
+    display: "none",
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+      margin: "auto",
+    },
   },
 }))
 
@@ -68,11 +108,15 @@ const HomePage = () => {
   return (
     <>
       <Layout>
+        <div className={classes.mobileGraphic}>
+          <MobileHomeGraphic />
+        </div>
         <Grid
           spacing={5}
           container
           justifyContent="flex-start"
           alignItems="flex-start"
+          className={classes.container}
         >
           <Grid item lg={6} className={classes.introduction}>
             <Typography className={`${classes.typography} ${classes.name}`}>

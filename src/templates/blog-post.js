@@ -4,8 +4,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Container, Fab, Typography } from "@material-ui/core"
 
 import Layout from "../components/layout"
-import useStyles from "../styles/markdown"
-import ScrollTop from "../components/scroll-top"
+import useStyles from "../components/blog-post/styles"
+import ScrollTop from "../components/scroll-top/scroll-top"
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
 
 export const query = graphql`
