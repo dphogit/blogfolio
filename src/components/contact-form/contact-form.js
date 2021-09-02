@@ -9,6 +9,12 @@ const initialForm = { name: "", email: "", message: "" }
 const ContactForm = () => {
   const classes = useStyles()
 
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
   return (
     <Formik
       initialValues={initialForm}
@@ -21,8 +27,24 @@ const ContactForm = () => {
           .min(30, "Must Be 30 Characters Or More ")
           .required("Message Required"),
       })}
-      onSubmit={(_values, { resetForm }) => {
-        resetForm(initialForm)
+      onSubmit={(data, { resetForm }) => {
+        console.log(data)
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": "contact",
+            ...data,
+          }),
+        })
+          .then(data => {
+            console.log(JSON.stringify(data))
+            resetForm(initialForm)
+          })
+          .catch(error => {
+            console.log(error)
+            alert("Something went wrong with your submission")
+          })
       }}
     >
       {formik => (
