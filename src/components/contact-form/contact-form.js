@@ -3,6 +3,7 @@ import { Button, TextField } from "@material-ui/core"
 import { Formik } from "formik"
 import * as Yup from "yup"
 import useStyles from "./styles"
+import { navigate } from "gatsby-link"
 
 const initialForm = { name: "", email: "", message: "" }
 
@@ -27,7 +28,7 @@ const ContactForm = () => {
           .min(30, "Must Be 30 Characters Or More ")
           .required("Message Required"),
       })}
-      onSubmit={(data, { resetForm }) => {
+      onSubmit={data => {
         console.log(data)
         fetch("/", {
           method: "POST",
@@ -37,9 +38,8 @@ const ContactForm = () => {
             ...data,
           }),
         })
-          .then(data => {
-            console.log(JSON.stringify(data))
-            resetForm(initialForm)
+          .then(() => {
+            navigate("/thanks")
           })
           .catch(error => {
             console.log(error)
@@ -54,8 +54,10 @@ const ContactForm = () => {
           data-netlify="true"
           method="POST"
           name="contact"
+          netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="bot-field" />
           <TextField
             id="name"
             name="name"

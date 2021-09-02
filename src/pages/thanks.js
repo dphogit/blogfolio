@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     fontFamily: "Open Sans, sans-serif",
     textAlign: "center",
     fontWeight: "bold",
+    marginBottom: "1rem",
   },
 
   link: {
@@ -24,15 +25,18 @@ const useStyles = makeStyles({
   },
 })
 
-const NotFoundPage = () => {
+const ThanksPage = () => {
   const classes = useStyles()
 
   return (
     <Layout>
-      <Head page="404 Not Found" />
+      <Head page="Submission Successful" />
       <Container maxWidth="sm">
-        <Typography variant="h4" className={classes.title}>
-          404 Page Not Found!
+        <Typography variant="h4" className={classes.title} align="center">
+          Thank you for your submission!
+        </Typography>
+        <Typography align="center">
+          I will hopefully get back in touch soon.
         </Typography>
         <div className={classes.link}>
           <Link to="/">
@@ -46,4 +50,4 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+export default ThanksPage
