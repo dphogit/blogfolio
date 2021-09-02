@@ -4,9 +4,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Container, Fab, Typography } from "@material-ui/core"
 
 import Layout from "../components/layout"
-import useStyles from "../components/blog-post/styles"
+import useStyles from "../styles/blog-post"
 import ScrollTop from "../components/scroll-top/scroll-top"
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
+import Head from "../components/head"
 
 export const query = graphql`
   query ($slug: String!) {
@@ -36,6 +37,7 @@ const BlogPost = props => {
 
   return (
     <Layout>
+      <Head page={frontmatter.title} />
       <Container maxWidth="md" className={classes.markdown}>
         <div className={classes.header}>
           <Typography variant="h1" style={{ marginLeft: "-3px" }}>

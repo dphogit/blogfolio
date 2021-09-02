@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Slug from "../components/slug/slug"
+import Head from "../components/head"
 
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
@@ -38,6 +39,7 @@ const BlogPage = () => {
 
   return (
     <Layout>
+      <Head page="Blog" />
       <Typography
         align="center"
         variant={matches ? "h3" : "h1"}

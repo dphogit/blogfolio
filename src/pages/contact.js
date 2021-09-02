@@ -1,11 +1,5 @@
 import React from "react"
-import {
-  Card,
-  makeStyles,
-  CardContent,
-  Container,
-  Typography,
-} from "@material-ui/core"
+import { Card, CardContent, Container, Typography } from "@material-ui/core"
 
 import Layout from "../components/layout"
 import ContactForm from "../components/contact-form/contact-form"
@@ -13,68 +7,15 @@ import NewsletterSvg from "../assets/newsletter.svg"
 import GitHubSvg from "../assets/github.svg"
 import LinkedInSvg from "../assets/linkedin-app.svg"
 import TwitterSvg from "../assets/twitter-app.svg"
-
-const useStyles = makeStyles(theme => ({
-  card: {
-    padding: "1.5rem 0.5rem",
-    [theme.breakpoints.down("sm")]: {
-      padding: "0.5rem 0.25rem",
-    },
-  },
-
-  cardHeader: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: "1rem",
-
-    "& h3": {
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "2rem",
-      },
-    },
-
-    "& svg": {
-      width: "7.5%",
-      marginLeft: "1rem",
-      [theme.breakpoints.down("sm")]: {
-        display: "none",
-      },
-    },
-  },
-
-  footer: {
-    marginTop: theme.spacing(3),
-  },
-
-  socialActions: {
-    display: "flex",
-    justifyContent: "center",
-    margin: "auto",
-    marginTop: theme.spacing(1),
-    width: "45%",
-
-    [theme.breakpoints.down("sm")]: {
-      width: "80%",
-    },
-
-    "& a": {
-      width: "25%",
-      margin: "5%",
-
-      "& svg": {
-        width: "100%",
-        top: 0,
-      },
-    },
-  },
-}))
+import Head from "../components/head"
+import useStyles from "../styles/contact"
 
 const ContactPage = () => {
   const classes = useStyles()
 
   return (
     <Layout>
+      <Head page="Contact" />
       <Container maxWidth="sm" style={{ padding: 0 }}>
         <Card variant="elevation" className={classes.card}>
           <CardContent>

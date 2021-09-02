@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import AvatarSVG from "../assets/avatar.svg"
 import MobileHomeGraphic from "../components/mobile-home-graphic/mobile-home-graphic"
+import Head from "../components/head"
 import useStyles from "../styles/home"
 
 const HomePage = () => {
@@ -13,6 +14,7 @@ const HomePage = () => {
   return (
     <>
       <Layout>
+        <Head page="Home" />
         <div className={classes.mobileGraphic}>
           <MobileHomeGraphic />
         </div>

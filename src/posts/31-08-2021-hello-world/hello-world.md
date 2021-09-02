@@ -47,7 +47,7 @@ Crack on the second semester where things were starting to open up again and we 
 
 It was here I really enjoyed the course and put my existing programming knowledge/skills into practice. Here is an example of one of the projects I did for the MATLAB section where we created a Julia Set Fractal Generator:
 
-![Julia Fractal Generator](julia.PNG)
+![Julia Fractal Generator](julia-fractal.jpg)
 <p align="center" class="caption"  style="font-size: 0.875rem">Julia Set Fractal Generator MATLAB Project<p>
 
 So it was during the duration of this course that I began to heavily consider pursuing a Software Engineering degree. It was really competitve to get into as the demand for it was really high and there was limited spots but after working hard and persevering I received a place in the cohort.
