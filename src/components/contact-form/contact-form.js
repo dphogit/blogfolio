@@ -21,8 +21,7 @@ const ContactForm = () => {
           .min(30, "Must Be 30 Characters Or More ")
           .required("Message Required"),
       })}
-      onSubmit={(values, { resetForm }) => {
-        alert(JSON.stringify(values, null, 4))
+      onSubmit={(_values, { resetForm }) => {
         resetForm(initialForm)
       }}
     >
@@ -30,7 +29,16 @@ const ContactForm = () => {
         <form
           onSubmit={formik.handleSubmit}
           style={{ display: "flex", flexDirection: "column" }}
+          data-netlify="true"
+          method="POST"
+          name="contact"
         >
+          <input
+            type="hidden"
+            name="form-name"
+            value="contact"
+            action="/contact"
+          />
           <TextField
             id="name"
             name="name"
