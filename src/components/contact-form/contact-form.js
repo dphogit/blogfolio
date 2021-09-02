@@ -33,12 +33,7 @@ const ContactForm = () => {
           method="POST"
           name="contact"
         >
-          <input
-            type="hidden"
-            name="form-name"
-            value="contact"
-            action="/contact"
-          />
+          <input type="hidden" name="form-name" value="contact" />
           <TextField
             id="name"
             name="name"
