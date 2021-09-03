@@ -9,7 +9,7 @@ const OPEN_SANS = "Open Sans, sans-serif"
  * Styles for markdown content in blog posts
  */
 const useStyles = makeStyles(theme => ({
-  markdown: {
+  content: {
     "& h1": {
       fontFamily: RALEWAY,
       fontSize: "3.75rem",
@@ -80,11 +80,36 @@ const useStyles = makeStyles(theme => ({
       textUnderlineOffset: "0.125rem",
     },
 
-    marginBottom: "10rem",
+    marginBottom: "7.5rem",
   },
 
   header: {
     margin: "1rem 0",
+  },
+
+  dateAndReadTime: {
+    display: "flex",
+    opacity: 0.95,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
+
+  readTime: {
+    marginLeft: "1.75rem",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 0,
+    },
+  },
+
+  imageWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    maxWidth: "100%",
+
+    "& img": {
+      maxWidth: "100%",
+    },
   },
 }))
 

@@ -46,6 +46,7 @@ const useStyles = makeStyles(theme => ({
       color: "black",
       width: "100%",
       fontSize: "1rem",
+      lineHeight: "1.5rem",
     },
   },
   contactText: {

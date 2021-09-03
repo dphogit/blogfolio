@@ -7,22 +7,20 @@ import useStyles from "./styles"
 
 const Slug = ({ node }) => {
   const classes = useStyles()
-  const { frontmatter, timeToRead } = node
-  const { indexImage } = frontmatter
 
-  const readingTime = `${timeToRead} min read`
+  const { title, blurb, slug, publishedDate, photo, fields } = node
 
   return (
-    <Card variant="outlined" key={node.id}>
-      <Link className={classes.slug} to={`/blog/${node.fields.slug}`}>
-        <GatsbyImage image={getImage(indexImage)} alt={indexImage.name} />
+    <Card variant="outlined" className={classes.card} key={node.id}>
+      <Link className={classes.slug} to={`/blog/${slug}`}>
+        <GatsbyImage image={getImage(photo)} alt={photo.title} />
         <CardContent>
           <Typography variant="body2" className={classes.details}>
-            <span>{frontmatter.date}</span>
-            <span style={{ marginLeft: "1rem" }}>{readingTime}</span>
+            <span>{publishedDate}</span>
+            <span>{fields.readingTime.text}</span>
           </Typography>
-          <Typography variant="h5">{frontmatter.title}</Typography>
-          <Typography className={classes.blurb}>{frontmatter.blurb}</Typography>
+          <Typography variant="h5">{title}</Typography>
+          <Typography className={classes.blurb}>{blurb}</Typography>
         </CardContent>
       </Link>
     </Card>

@@ -1,7 +1,9 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Container, Fab, Typography } from "@material-ui/core"
+import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { MARKS, BLOCKS } from "@contentful/rich-text-types"
 
 import Layout from "../components/layout"
 import useStyles from "../styles/blog-post"
@@ -10,51 +12,89 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
 import Head from "../components/head"
 
 export const query = graphql`
-  query ($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      frontmatter {
+  query GetBlogPost($slug: String!) {
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      publishedDate(formatString: "DD-MM-YY")
+      photo {
+        gatsbyImageData
         title
-        date
-        indexImage {
-          childImageSharp {
-            gatsbyImageData
-          }
-          name
-        }
-        imageCredit
-        imageCreditLink
       }
-      html
+      photographer
+      photographerLink
+      body {
+        raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            __typename
+            fluid {
+              src
+              srcSet
+            }
+          }
+        }
+      }
+      fields {
+        readingTime {
+          text
+        }
+      }
     }
   }
 `
 
+const Bold = ({ children }) => (
+  <span style={{ fontWeight: "bold" }}>{children}</span>
+)
+const Text = ({ children }) => <p>{children}</p>
+
 const BlogPost = props => {
   const classes = useStyles()
 
-  const { frontmatter } = props.data.markdownRemark
-  const image = getImage(frontmatter.indexImage)
+  const {
+    title,
+    publishedDate,
+    photo,
+    photographer,
+    photographerLink,
+    body,
+    fields,
+  } = props.data.contentfulBlogPost
+
+  const options = {
+    renderMark: {
+      [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+    },
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+      [BLOCKS.EMBEDDED_ASSET]: node => (
+        <div className={classes.imageWrapper}>
+          <img src={node.data.target.fluid.src} alt={node.data.target.title} />
+        </div>
+      ),
+    },
+  }
 
   return (
     <Layout>
-      <Head page={frontmatter.title} />
-      <Container maxWidth="md" className={classes.markdown}>
+      <Container maxWidth="md" className={classes.content}>
+        <Head page={title} />
         <div className={classes.header}>
           <Typography variant="h1" style={{ marginLeft: "-3px" }}>
-            {frontmatter.title}
+            {title}
           </Typography>
-          <Typography>{frontmatter.date}</Typography>
+          <Typography className={classes.dateAndReadTime}>
+            <span>{publishedDate}</span>
+            <span className={classes.readTime}>{fields.readingTime.text}</span>
+          </Typography>
         </div>
-        <GatsbyImage image={image} alt={frontmatter.indexImage.name} />
+        <GatsbyImage image={getImage(photo)} alt={photo.title} />
         <Typography align="center" variant="caption">
           {"Photo By: "}
-          <Link to={frontmatter.imageCreditLink}>
-            {frontmatter.imageCredit}
-          </Link>
+          <a href={photographerLink}>{photographer}</a>
         </Typography>
-        <div
-          dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
-        />
+        <div>{body && renderRichText(body, options)}</div>
       </Container>
       <ScrollTop {...props}>
         <Fab color="secondary" aria-label="scroll back to top" size="large">
