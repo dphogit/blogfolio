@@ -1,6 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
+  card: {
+    minHeight: "100%",
+  },
+
   slug: {
     color: "black",
     textDecoration: "none",
@@ -28,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 
   details: {
     display: "flex",
+    justifyContent: "space-between",
     opacity: 0.7,
   },
 

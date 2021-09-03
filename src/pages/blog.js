@@ -8,24 +8,22 @@ import Head from "../components/head"
 
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
+    query GetAllBlogPosts {
+      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
         edges {
           node {
             id
-            timeToRead
-            fields {
-              slug
-            }
-            frontmatter {
+            title
+            blurb
+            slug
+            publishedDate(formatString: "DD-MM-YYYY")
+            photo {
+              gatsbyImageData
               title
-              date
-              blurb
-              indexImage {
-                name
-                childImageSharp {
-                  gatsbyImageData
-                }
+            }
+            fields {
+              readingTime {
+                text
               }
             }
           }
@@ -43,12 +41,12 @@ const BlogPage = () => {
       <Typography
         align="center"
         variant={matches ? "h3" : "h1"}
-        style={{ fontFamily: "Open-sans , sans-serif", margin: "2rem" }}
+        style={{ fontFamily: "Raleway , sans-serif", margin: "2rem" }}
       >
-        Posts
+        Blog Posts
       </Typography>
       <Grid container spacing={matches ? 5 : 10}>
-        {data.allMarkdownRemark.edges.map(edge => (
+        {data.allContentfulBlogPost.edges.map(edge => (
           <Grid key={edge.node.id} lg={3} md={4} item>
             <Slug node={edge.node} />
           </Grid>

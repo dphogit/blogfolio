@@ -3,7 +3,6 @@ import { Card, CardContent, Container, Typography } from "@material-ui/core"
 
 import Layout from "../components/layout"
 import ContactForm from "../components/contact-form/contact-form"
-import NewsletterSvg from "../assets/newsletter.svg"
 import GitHubSvg from "../assets/github.svg"
 import LinkedInSvg from "../assets/linkedin-app.svg"
 import TwitterSvg from "../assets/twitter-app.svg"
@@ -20,8 +19,12 @@ const ContactPage = () => {
         <Card variant="elevation" className={classes.card}>
           <CardContent>
             <div className={classes.cardHeader}>
-              <Typography variant="h3">Get In Touch</Typography>
-              <NewsletterSvg />
+              <Typography
+                variant="h3"
+                style={{ fontFamily: "Raleway, sans-serif" }}
+              >
+                Get In Touch
+              </Typography>
             </div>
             <ContactForm />
           </CardContent>
