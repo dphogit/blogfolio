@@ -1,84 +1,54 @@
-import React from "react"
-import {
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
-  IconButton,
-} from "@material-ui/core"
+import React, { useState } from "react"
+import { Toolbar, IconButton, Drawer, List, ListItem } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
-import { Link } from "gatsby"
 
 import useStyles from "./styles"
+import Logo from "../logo/logo"
+import MobileNavItem from "./mobile-nav-item/mobile-nav-item"
+import NavItem from "./nav-item/nav-item"
 
 const Navigation = () => {
   const classes = useStyles()
 
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const open = Boolean(anchorEl)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const handleMenu = e => {
-    setAnchorEl(e.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
+  const desktopView = (
+    <>
+      <NavItem destination="/blog">Blog</NavItem>
+      <NavItem destination="/contact">Contact</NavItem>
+    </>
+  )
 
   const mobileView = (
-    <div className={classes.mobileView}>
+    <>
       <IconButton
-        color="inherit"
-        onClick={handleMenu}
-        aria-label="menu bar"
-        aria-haspopup="true"
-        aria-controls="menu-appbar"
+        className={classes.mobileMenu}
+        onClick={() => setDrawerOpen(true)}
       >
         <MenuIcon />
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem>
-          <Link to="/blog" className={classes.link}>
-            Blog
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link to="/contact" className={classes.link}>
-            Contact
-          </Link>
-        </MenuItem>
-      </Menu>
-    </div>
-  )
 
-  const desktopView = (
-    <div className={classes.desktopView}>
-      <Link
-        to="/blog"
-        className={classes.link}
-        activeClassName={classes.active}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        classes={{ paper: classes.drawerPaper }}
       >
-        Blog
-      </Link>
-      <Link
-        to="/contact"
-        className={classes.link}
-        activeClassName={classes.active}
-      >
-        Contact
-      </Link>
-    </div>
+        <List>
+          <ListItem>
+            <Logo isLight={false} />
+          </ListItem>
+          <MobileNavItem destination="/blog">Blog</MobileNavItem>
+          <MobileNavItem destination="/contact">Contact</MobileNavItem>
+        </List>
+      </Drawer>
+    </>
   )
 
   return (
-    <nav className={classes.root} id="nav-bar">
-      <Toolbar className={classes.navigation}>
-        <Typography variant="h6" className={classes.main}>
-          <Link to="/" className={classes.mainLink}>
-            <span style={{ color: "black" }}>Dean</span>
-            <span style={{ color: "rgba(0, 0, 0, 0.25)" }}>Phommahaxay</span>
-          </Link>
-        </Typography>
+    <nav>
+      <Toolbar className={classes.toolbar}>
+        <Logo isLight={true} />
         {desktopView}
         {mobileView}
       </Toolbar>
