@@ -16,6 +16,20 @@ import useStyles from "./styles"
 const LandingSection = () => {
   const classes = useStyles()
 
+  // Scrolls to the about me section
+  const handleScroll = e => {
+    const anchor = (e.target.ownerDocument || document).querySelector(
+      "#about-me"
+    )
+
+    if (anchor) {
+      anchor.scrollIntoView({
+        behaviour: "smooth",
+        block: "center",
+      })
+    }
+  }
+
   return (
     <section id="landing" className={classes.landingSection}>
       <Grid container direction="column" className={classes.landingGrid}>
@@ -51,7 +65,7 @@ const LandingSection = () => {
           alignItems="flex-end"
         >
           <Zoom in={true} timeout={2500} style={{ transitionDelay: "5s" }}>
-            <IconButton>
+            <IconButton onClick={handleScroll}>
               <KeyboardArrowDownIcon className={classes.arrowDown} />
             </IconButton>
           </Zoom>
