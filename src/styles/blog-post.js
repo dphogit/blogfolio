@@ -5,9 +5,6 @@ const TEXT_FONT_SIZE_SMALL = "1rem"
 const RALEWAY = "Raleway, sans-serif"
 const OPEN_SANS = "Open Sans, sans-serif"
 
-/**
- * Styles for markdown content in blog posts
- */
 const useStyles = makeStyles(theme => ({
   content: {
     "& h1": {

@@ -1,5 +1,12 @@
 import React, { useState } from "react"
-import { Toolbar, IconButton, Drawer, List, ListItem } from "@material-ui/core"
+import {
+  Toolbar,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  Slide,
+} from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
 
 import useStyles from "./styles"
@@ -46,13 +53,15 @@ const Navigation = () => {
   )
 
   return (
-    <nav>
-      <Toolbar className={classes.toolbar}>
-        <Logo isLight={true} />
-        {desktopView}
-        {mobileView}
-      </Toolbar>
-    </nav>
+    <Slide in={true} timeout={3000} direction="down">
+      <nav id="navigation">
+        <Toolbar className={classes.toolbar}>
+          <Logo isLight={true} />
+          {desktopView}
+          {mobileView}
+        </Toolbar>
+      </nav>
+    </Slide>
   )
 }
 

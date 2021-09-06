@@ -5,7 +5,7 @@ const heroMdHeight = "70%"
 
 const useStyles = makeStyles(theme => ({
   landingSection: {
-    height: "calc(100vh - 64px)", // NavBar 64 px tall on min width 600px
+    height: "calc(100vh - 64px)", // NavBar is 64 px tall on min width 600px
   },
 
   landingGrid: {

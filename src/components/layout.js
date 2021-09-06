@@ -1,9 +1,8 @@
-import React from "react"
-import { Container, ThemeProvider, makeStyles } from "@material-ui/core"
+import React, { useState, useEffect } from "react"
+import { Container, makeStyles, Fade } from "@material-ui/core"
 
 import Navigation from "./navigation/navigation"
-import theme from "../theme"
-import "../styles/index.css"
+import LoadingScreen from "./loading-screen/loading-screen"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -17,16 +16,33 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const msDelay = 2000
+
 const Layout = props => {
   const classes = useStyles()
 
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), msDelay)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
+  if (loading) {
+    return (
+      <Fade in={loading} unmountOnExit>
+        <LoadingScreen />
+      </Fade>
+    )
+  }
+
   return (
-    <ThemeProvider theme={theme}>
-      <Container maxWidth="md" className={classes.container}>
-        <Navigation />
-        {props.children}
-      </Container>
-    </ThemeProvider>
+    <Container maxWidth="md" className={classes.container}>
+      <Navigation />
+      {props.children}
+    </Container>
   )
 }
 
