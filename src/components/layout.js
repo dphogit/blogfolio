@@ -44,7 +44,7 @@ const Layout = props => {
     <Container maxWidth="md" className={classes.container}>
       <Navigation />
       {props.children}
-      <ScrollTop {...props}>
+      <ScrollTop>
         <Fab color="primary" aria-label="scroll back to top" size="medium">
           <KeyboardArrowUpIcon />
         </Fab>

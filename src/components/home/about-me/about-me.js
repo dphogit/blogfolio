@@ -50,7 +50,7 @@ const AboutMe = () => {
           </Typography>
 
           <Typography className={classes.bio} align="center" variant="body1">
-            Technologies I've worked proficiently with:
+            Technologies I've proficiently worked with:
           </Typography>
           <TechStackList />
         </Grid>

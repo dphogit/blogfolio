@@ -6,6 +6,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    borderTop: `1px solid ${theme.palette.text.secondary}`,
   },
 
   aboutHeading: {
