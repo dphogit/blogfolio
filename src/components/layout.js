@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const msDelay = 2000
+const msDelay = 1500
 
 const Layout = props => {
   const classes = useStyles()

@@ -40,6 +40,9 @@ const theme = createTheme({
       fontSize: "6.625rem",
       lineHeight: "6rem",
     },
+    blogHeader: {
+      fontFamily: "Raleway, Helvetica, Arial, sans-serif",
+    },
   },
 
   overrides: {

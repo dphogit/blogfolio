@@ -1,45 +1,47 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
-  card: {
-    minHeight: "100%",
-  },
-
   slug: {
-    color: "black",
-    textDecoration: "none",
+    fontFamily: theme.typography.fontFamily,
+    padding: theme.spacing(1),
+
+    "&:hover": {
+      backgroundColor: theme.palette.grey[200],
+    },
+
+    "& img": {
+      borderRadius: theme.spacing(1),
+    },
+
+    "& a": {
+      textDecoration: "none",
+      color: theme.palette.common.black,
+    },
 
     "& h5": {
-      fontFamily: "Raleway, sans-serif",
-      lineHeight: "1.75rem",
-      margin: "0.5rem 0",
-      [theme.breakpoints.down("md")]: {
-        lineHeight: "1.4rem",
-        fontSize: "1.25rem",
-      },
+      fontWeight: "bold",
+      fontFamily: theme.typography.blogHeader.fontFamily,
+      fontSize: "1.25rem",
+      lineHeight: "1.625rem",
+      color: theme.palette.common.black,
     },
 
     "& p": {
-      fontFamily: "Roboto, sans-serif",
-    },
-
-    "&:hover": {
-      "& h5": {
-        textDecoration: "underline",
-      },
+      marginTop: theme.spacing(1),
+      fontSize: "0.875rem",
+      lineHeight: "1.375rem",
+      color: theme.palette.text.secondary,
     },
   },
 
   details: {
     display: "flex",
     justifyContent: "space-between",
-    opacity: 0.7,
-  },
-
-  blurb: {
-    [theme.breakpoints.down("md")]: {
-      fontSize: "0.75rem",
-    },
+    alignItems: "center",
+    color: theme.palette.text.secondary,
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    fontSize: "0.75rem",
   },
 }))
 

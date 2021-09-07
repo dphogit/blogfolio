@@ -1,21 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Container, Fab, Typography } from "@material-ui/core"
+import Typography from "@material-ui/core/Typography"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { MARKS, BLOCKS } from "@contentful/rich-text-types"
 
 import Layout from "../components/layout"
-import useStyles from "../styles/blog-post"
-import ScrollTop from "../components/scroll-top/scroll-top"
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
 import Head from "../components/head"
+import Footer from "../components/footer/footer"
+import useStyles from "../page-styles/blog-post"
 
 export const query = graphql`
   query GetBlogPost($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishedDate(formatString: "DD-MM-YY")
+      publishedDate(formatString: "MMMM Do YYYY")
       photo {
         gatsbyImageData
         title
@@ -47,10 +46,24 @@ export const query = graphql`
 const Bold = ({ children }) => (
   <span style={{ fontWeight: "bold" }}>{children}</span>
 )
-const Text = ({ children }) => <p>{children}</p>
+const Text = ({ children }) => <Typography gutterBottom>{children}</Typography>
 
 const BlogPost = props => {
   const classes = useStyles()
+
+  const options = {
+    renderMark: {
+      [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+    },
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (_node, children) => <Text>{children}</Text>,
+      [BLOCKS.EMBEDDED_ASSET]: node => (
+        <div className={classes.blogImageWrapper}>
+          <img src={node.data.target.fluid.src} alt={node.data.target.title} />
+        </div>
+      ),
+    },
+  }
 
   const {
     title,
@@ -62,45 +75,26 @@ const BlogPost = props => {
     fields,
   } = props.data.contentfulBlogPost
 
-  const options = {
-    renderMark: {
-      [MARKS.BOLD]: text => <Bold>{text}</Bold>,
-    },
-    renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-      [BLOCKS.EMBEDDED_ASSET]: node => (
-        <div className={classes.imageWrapper}>
-          <img src={node.data.target.fluid.src} alt={node.data.target.title} />
-        </div>
-      ),
-    },
-  }
-
   return (
     <Layout>
-      <Container maxWidth="md" className={classes.content}>
-        <Head page={title} />
-        <div className={classes.header}>
-          <Typography variant="h1" style={{ marginLeft: "-3px" }}>
-            {title}
-          </Typography>
-          <Typography className={classes.dateAndReadTime}>
-            <span>{publishedDate}</span>
-            <span className={classes.readTime}>{fields.readingTime.text}</span>
-          </Typography>
-        </div>
-        <GatsbyImage image={getImage(photo)} alt={photo.title} />
-        <Typography align="center" variant="caption">
-          {"Photo By: "}
-          <a href={photographerLink}>{photographer}</a>
+      <Head page={title} />
+      <header id="blog-header" className={classes.blogHeader}>
+        <Typography variant="h2" component="h1" gutterBottom>
+          {title}
         </Typography>
-        <div>{body && renderRichText(body, options)}</div>
-      </Container>
-      <ScrollTop {...props}>
-        <Fab color="secondary" aria-label="scroll back to top" size="large">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
+
+        <Typography>{publishedDate}</Typography>
+        <Typography gutterBottom>{fields.readingTime.text}</Typography>
+
+        <GatsbyImage image={getImage(photo)} alt={photo.title} />
+        <Typography variant="caption">
+          Photo By: <a href={photographerLink}>{photographer}</a>
+        </Typography>
+      </header>
+      <section id="blog-content" className={classes.blogContent}>
+        {body && renderRichText(body, options)}
+      </section>
+      <Footer />
     </Layout>
   )
 }

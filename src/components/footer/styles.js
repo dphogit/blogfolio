@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
   bio: {
     fontSize: "1rem",
-    lineHeight: "1.25rem",
+    lineHeight: "1.45rem",
     width: "60%",
   },
 

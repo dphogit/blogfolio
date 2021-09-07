@@ -7,7 +7,7 @@ import GitHubSvg from "../assets/github.svg"
 import LinkedInSvg from "../assets/linkedin-app.svg"
 import TwitterSvg from "../assets/twitter-app.svg"
 import Head from "../components/head"
-import useStyles from "../styles/contact"
+import useStyles from "../page-styles/contact"
 
 const ContactPage = () => {
   const classes = useStyles()
