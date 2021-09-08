@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 
     "& button[type=submit]": {
       marginLeft: theme.spacing(3),
-      // border: "2px solid",
     },
   },
 }))

@@ -7,6 +7,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "1rem",
     fontFamily: theme.typography.fontFamily,
     color: theme.palette.text.secondary,
+
+    [theme.breakpoints.down("sm")]: {
+      padding: "0.5rem 0.75rem",
+    },
   },
 }))
 

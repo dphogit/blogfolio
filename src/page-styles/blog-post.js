@@ -35,35 +35,54 @@ const useStyles = makeStyles(theme => ({
       fontFamily: theme.typography.blogHeader.fontFamily,
       fontSize: "2.25rem",
       lineHeight: "2.75rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1.5rem",
+        lineHeight: "1.75rem",
+      },
     },
 
     "& h3": {
       fontFamily: theme.typography.blogHeader.fontFamily,
       fontSize: "2rem",
       lineHeight: "2.5rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1.25rem",
+        lineHeight: "1.5rem",
+      },
     },
 
     "& h4": {
       fontFamily: theme.typography.blogHeader.fontFamily,
       fontSize: "1.75rem",
       lineHeight: "2.25rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1rem",
+        lineHeight: "1.375rem",
+      },
     },
 
-    "& h5": {
+    "& h5, h6": {
       fontFamily: theme.typography.blogHeader.fontFamily,
       fontSize: "1.5rem",
       lineHeight: "2rem",
-    },
 
-    "& h6": {
-      fontFamily: theme.typography.blogHeader.fontFamily,
-      fontSize: "1.5rem",
-      lineHeight: "2rem",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "0.875rem",
+        lineHeight: "1.375rem",
+      },
     },
 
     "& p": {
       fontSize: "1.25rem",
       lineHeight: "1.75rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "0.875rem",
+        lineHeight: "1.375rem",
+      },
     },
   },
 

@@ -7,7 +7,6 @@ import { MARKS, BLOCKS } from "@contentful/rich-text-types"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import Footer from "../components/footer/footer"
 import useStyles from "../page-styles/blog-post"
 
 export const query = graphql`
@@ -94,7 +93,6 @@ const BlogPost = props => {
       <section id="blog-content" className={classes.blogContent}>
         {body && renderRichText(body, options)}
       </section>
-      <Footer />
     </Layout>
   )
 }

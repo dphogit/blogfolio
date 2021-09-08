@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   drawerPaper: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.primary.main,
     paddingBottom: "1rem",
   },
 }))

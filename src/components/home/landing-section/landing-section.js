@@ -1,6 +1,12 @@
 import React from "react"
 
-import { Grid, Typography, Grow } from "@material-ui/core"
+import {
+  Grid,
+  Typography,
+  Grow,
+  useTheme,
+  useMediaQuery,
+} from "@material-ui/core"
 
 import useStyles from "./styles"
 import LinkButton from "../../link-button/link-button"
@@ -8,6 +14,9 @@ import ScrollDownAnimateButton from "../../scroll-down-animate-button/scroll-dow
 
 const LandingSection = () => {
   const classes = useStyles()
+
+  const theme = useTheme()
+  const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down("xs"))
 
   return (
     <section id="landing" className={classes.landingSection}>
@@ -35,14 +44,16 @@ const LandingSection = () => {
             </div>
           </Grow>
         </Grid>
-        <Grid
-          container
-          className={classes.arrowDownGroup}
-          justifyContent="center"
-          alignItems="flex-end"
-        >
-          <ScrollDownAnimateButton targetId="#about-me" />
-        </Grid>
+        {!isExtraSmallScreen && (
+          <Grid
+            container
+            className={classes.arrowDownGroup}
+            justifyContent="center"
+            alignItems="flex-end"
+          >
+            <ScrollDownAnimateButton targetId="#about-me" />
+          </Grid>
+        )}
       </Grid>
     </section>
   )

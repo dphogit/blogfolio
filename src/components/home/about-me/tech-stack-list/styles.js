@@ -13,6 +13,13 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "0.25rem",
     paddingBottom: "0.25rem",
     paddingLeft: 0,
+
+    [theme.breakpoints.down("xs")]: {
+      paddingRight: 0,
+      "& div": {
+        minWidth: "2rem",
+      },
+    },
   },
 
   techListItemText: {

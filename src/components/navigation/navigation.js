@@ -53,7 +53,7 @@ const Navigation = () => {
   )
 
   return (
-    <Slide in={true} timeout={3000} direction="down">
+    <Slide in={true} timeout={500} direction="down">
       <nav id="navigation">
         <Toolbar className={classes.toolbar}>
           <Logo isLight={true} />

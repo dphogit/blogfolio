@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Grid container spacing={4}>
-        <Grid item xs={6}>
+        <Grid item sm={6} xs={8}>
           <div className={classes.imageWrapper}>
             <StaticImage src="../../assets/picture.png" alt="profile" />
           </div>
@@ -33,7 +33,7 @@ const Footer = () => {
             <Button variant="outlined">Contact Me</Button>
           </Link>
         </Grid>
-        <Grid item xs={6} className={classes.quickLinks}>
+        <Grid item sm={6} xs={4} className={classes.quickLinks}>
           <Typography variant="h5">Quick Links</Typography>
           <ul>
             <li>

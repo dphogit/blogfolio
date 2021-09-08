@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme => ({
   timelineDot: {
     width: "1.75rem",
     height: "1.75rem",
-    // border: `2px solid ${theme.palette.common.black}`,
     backgroundColor: props =>
       props.isExperience
         ? theme.palette.primary.main
@@ -26,10 +25,18 @@ const useStyles = makeStyles(theme => ({
     "& h3": {
       fontWeight: "bold",
       fontSize: "1.5rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1rem",
+      },
     },
 
     "& p": {
       fontSize: "1rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "0.875rem",
+      },
     },
   },
 }))

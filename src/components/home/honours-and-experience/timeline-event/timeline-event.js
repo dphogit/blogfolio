@@ -18,8 +18,8 @@ const TimelineEvent = props => {
   const { date, isExperience, description, isEnd } = props
 
   return (
-    <TimelineItem className={classes.timelineItem}>
-      <TimelineOppositeContent>
+    <TimelineItem>
+      <TimelineOppositeContent className={classes.timelineOppositeContent}>
         <Typography variant="subtitle1" color="textPrimary">
           {date}
         </Typography>

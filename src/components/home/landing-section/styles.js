@@ -6,6 +6,10 @@ const heroMdHeight = "70%"
 const useStyles = makeStyles(theme => ({
   landingSection: {
     height: "calc(100vh - 64px)", // NavBar is 64 px tall on min width 600px
+    [theme.breakpoints.down("xs")]: {
+      height: "auto",
+      marginTop: "4rem",
+    },
   },
 
   landingGrid: {
@@ -52,12 +56,27 @@ const useStyles = makeStyles(theme => ({
       textDecoration: "none",
     },
 
-    "& button": {
-      padding: "0.75rem 1.5rem",
-      borderRadius: 0,
-      fontSize: "1rem",
-      fontFamily: theme.typography.fontFamily,
-      color: theme.palette.text.secondary,
+    [theme.breakpoints.down("xs")]: {
+      "& h1": {
+        fontSize: "4rem",
+        lineHeight: "4rem",
+      },
+
+      "& p:nth-child(1)": {
+        fontSize: "1rem",
+        lineHeight: "1rem",
+      },
+
+      "& p:nth-child(3)": {
+        lineHeight: "1.5rem",
+        fontSize: "1rem",
+        marginTop: "0.75rem",
+      },
+
+      "& strong:nth-child(1), & strong:nth-child(2)": {
+        fontSize: "1.125rem",
+        lineHeight: "1.5rem",
+      },
     },
   },
 

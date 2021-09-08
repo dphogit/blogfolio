@@ -69,7 +69,7 @@ const ContactForm = () => {
             <Button variant="contained" onClick={formik.handleReset}>
               Reset
             </Button>
-            <Button type="submit" variant="contained" color="secondary">
+            <Button type="submit" variant="contained" color="primary">
               Send
             </Button>
           </div>

@@ -1,7 +1,7 @@
 import React from "react"
 
-import Timeline from "@material-ui/lab/Timeline"
 import Typography from "@material-ui/core/Typography"
+import Timeline from "@material-ui/lab/Timeline"
 
 import TimelineEvent from "./timeline-event/timeline-event"
 import useStyles from "./styles"

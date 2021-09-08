@@ -7,10 +7,21 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     borderTop: `1px solid ${theme.palette.text.secondary}`,
+
+    [theme.breakpoints.down("xs")]: {
+      borderTop: "none",
+      height: "auto",
+      marginTop: "4.75rem",
+    },
   },
 
   aboutHeading: {
     marginBottom: "1rem",
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "2rem",
+      lineHeight: "2rem",
+    },
   },
 
   bio: {
@@ -27,31 +38,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
 
-  techList: {
-    paddingInlineStart: 0,
-  },
-
-  techListIcon: {
-    maxHeight: "0.875rem",
-  },
-
-  techListItem: {
-    paddingTop: "0.25rem",
-    paddingBottom: "0.25rem",
-    paddingLeft: 0,
-  },
-
-  techListItemText: {
-    "& > span": {
-      fontFamily: "Monospace",
-      fontSize: "0.875rem",
-    },
-  },
-
   rightCol: {
     "& > div": {
       position: "relative",
       width: "75%",
+
+      [theme.breakpoints.down("sm")]: {
+        marginLeft: "2rem",
+      },
     },
 
     "& svg": {
@@ -74,6 +68,10 @@ const useStyles = makeStyles(theme => ({
     border: `2px solid ${theme.palette.common.black}`,
     transform: "translate(-1.5rem, -1.5rem)",
     zIndex: 10,
+
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "1rem",
+    },
   },
 }))
 

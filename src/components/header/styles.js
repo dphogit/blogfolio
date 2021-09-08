@@ -6,6 +6,11 @@ const useStyles = makeStyles(theme => ({
 
     "& h1": {
       marginBottom: "1rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "4rem",
+        lineHeight: "4rem",
+      },
     },
 
     "& a": {
@@ -22,6 +27,15 @@ const useStyles = makeStyles(theme => ({
     "& p": {
       fontSize: "1.25rem",
       lineHeight: "2rem",
+
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1.125rem",
+        lineHeight: "1.75rem",
+      },
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "3.875rem",
     },
   },
 }))
