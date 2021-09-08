@@ -19,23 +19,21 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const msDelay = 1500
-
 const Layout = props => {
   const classes = useStyles()
 
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), msDelay)
+    const timer = setTimeout(() => setIsLoading(false), 1000)
     return () => {
       clearTimeout(timer)
     }
   }, [])
 
-  if (loading) {
+  if (isLoading) {
     return (
-      <Fade in={loading} unmountOnExit>
+      <Fade in={true}>
         <LoadingScreen />
       </Fade>
     )

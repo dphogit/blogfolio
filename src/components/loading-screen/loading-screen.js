@@ -5,7 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress"
 const LoadingScreen = () => {
   return (
     <Backdrop open>
-      <CircularProgress color="primary" size={150} />
+      <CircularProgress size={100} />
     </Backdrop>
   )
 }

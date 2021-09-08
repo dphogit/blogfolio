@@ -1,14 +1,13 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import { Grid, Typography, useTheme } from "@material-ui/core"
+import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
 
 import TechStackList from "./tech-stack-list/tech-stack-list"
 import useStyles from "./styles"
 
 const AboutMe = () => {
   const classes = useStyles()
-
-  const theme = useTheme()
 
   return (
     <section id="about-me" className={classes.aboutMeSection}>
@@ -66,15 +65,12 @@ const AboutMe = () => {
             <svg>
               <rect x="0" y="0" width="100%" height="100%" />
             </svg>
-            <StaticImage
-              src="../../../assets/picture.png"
-              alt="My Profile Picture"
-              style={{
-                border: `2px solid ${theme.palette.common.black}`,
-                transform: "translate(-1.5rem, -1.5rem)",
-                zIndex: 10,
-              }}
-            />
+            <div className={classes.imgWrapper}>
+              <StaticImage
+                src="../../../assets/picture.png"
+                alt="My Profile Picture"
+              />
+            </div>
           </div>
         </Grid>
       </Grid>

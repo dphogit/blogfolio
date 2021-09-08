@@ -67,6 +67,14 @@ const useStyles = makeStyles(theme => ({
       fill: theme.palette.text.secondary,
     },
   },
+
+  imgWrapper: {
+    width: "100%",
+    height: "100%",
+    border: `2px solid ${theme.palette.common.black}`,
+    transform: "translate(-1.5rem, -1.5rem)",
+    zIndex: 10,
+  },
 }))
 
 export default useStyles

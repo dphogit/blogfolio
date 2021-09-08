@@ -1,28 +1,13 @@
 import React from "react"
 
-import { Grid, Typography, Grow, Zoom, IconButton } from "@material-ui/core"
-
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown"
+import { Grid, Typography, Grow } from "@material-ui/core"
 
 import useStyles from "./styles"
 import LinkButton from "../../link-button/link-button"
+import ScrollDownAnimateButton from "../../scroll-down-animate-button/scroll-down-animate-button"
 
 const LandingSection = () => {
   const classes = useStyles()
-
-  // Scrolls to the about me section
-  const handleScroll = e => {
-    const anchor = (e.target.ownerDocument || document).querySelector(
-      "#about-me"
-    )
-
-    if (anchor) {
-      anchor.scrollIntoView({
-        behaviour: "smooth",
-        block: "center",
-      })
-    }
-  }
 
   return (
     <section id="landing" className={classes.landingSection}>
@@ -56,11 +41,7 @@ const LandingSection = () => {
           justifyContent="center"
           alignItems="flex-end"
         >
-          <Zoom in={true} timeout={2500} style={{ transitionDelay: "5s" }}>
-            <IconButton onClick={handleScroll}>
-              <KeyboardArrowDownIcon className={classes.arrowDown} />
-            </IconButton>
-          </Zoom>
+          <ScrollDownAnimateButton targetId="#about-me" />
         </Grid>
       </Grid>
     </section>
