@@ -51,14 +51,6 @@ const useStyles = makeStyles(theme => ({
     "& a": {
       textDecoration: "none",
     },
-
-    "& button": {
-      padding: "0.75rem 1.5rem",
-      borderRadius: 0,
-      fontSize: "1rem",
-      fontFamily: theme.typography.fontFamily,
-      color: theme.palette.text.secondary,
-    },
   },
 
   arrowDownGroup: {

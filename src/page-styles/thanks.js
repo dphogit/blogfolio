@@ -1,9 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
-  blogPosts: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(6),
+  thanksWrapper: {
+    "& h1": {
+      fontSize: "5rem",
+    },
   },
 }))
 

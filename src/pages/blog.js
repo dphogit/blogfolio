@@ -1,12 +1,11 @@
 import React from "react"
-// import { Grid, Typography, useMediaQuery, useTheme } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import { Grid, Typography } from "@material-ui/core"
 
 import Layout from "../components/layout"
 import Slug from "../components/slug/slug"
 import Head from "../components/head"
-import Footer from "../components/footer/footer"
+import Header from "../components/header/header"
 import useStyles from "../page-styles/blog"
 
 const BlogPage = () => {
@@ -40,8 +39,7 @@ const BlogPage = () => {
   return (
     <Layout>
       <Head page="Blog" />
-      <header className={classes.header}>
-        <Typography variant="h1">Blog Posts</Typography>
+      <Header heading="Blog posts">
         <Typography paragraph>
           Join me on my journey as I blog about a variety of topics ranging from
           specfic practical concepts to general human soft skills. My writing is
@@ -60,7 +58,7 @@ const BlogPage = () => {
           </a>{" "}
           to keep up to date.
         </Typography>
-      </header>
+      </Header>
       <Grid container spacing={4} id="blog-posts" className={classes.blogPosts}>
         {data.allContentfulBlogPost.edges.map(edge => (
           <Grid key={edge.node.id} xs={12} sm={6} md={4} item>
@@ -68,7 +66,6 @@ const BlogPage = () => {
           </Grid>
         ))}
       </Grid>
-      <Footer />
     </Layout>
   )
 }

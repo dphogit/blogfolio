@@ -1,63 +1,34 @@
 import React from "react"
-import { Card, CardContent, Container, Typography } from "@material-ui/core"
+import Typography from "@material-ui/core/Typography"
 
 import Layout from "../components/layout"
 import ContactForm from "../components/contact-form/contact-form"
-import GitHubSvg from "../assets/github.svg"
-import LinkedInSvg from "../assets/linkedin-app.svg"
-import TwitterSvg from "../assets/twitter-app.svg"
 import Head from "../components/head"
-import useStyles from "../page-styles/contact"
+import Header from "../components/header/header"
 
 const ContactPage = () => {
-  const classes = useStyles()
-
   return (
     <Layout>
       <Head page="Contact" />
-      <Container maxWidth="sm" style={{ padding: 0 }}>
-        <Card variant="elevation" className={classes.card}>
-          <CardContent>
-            <div className={classes.cardHeader}>
-              <Typography
-                variant="h3"
-                style={{ fontFamily: "Raleway, sans-serif" }}
-              >
-                Get In Touch
-              </Typography>
-            </div>
-            <ContactForm />
-          </CardContent>
-        </Card>
-        <footer className={classes.footer}>
-          <Typography variant="h5" align="center">
-            Social Profiles
-          </Typography>
-          <div className={classes.socialActions}>
-            <a
-              href="https://www.linkedin.com/in/dean-phommahaxay/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <LinkedInSvg />
-            </a>
-            <a
-              href="https://github.com/dphogit"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <GitHubSvg />
-            </a>
-            <a
-              href="https://twitter.com/_dean21"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <TwitterSvg />
-            </a>
-          </div>
-        </footer>
-      </Container>
+      <Header heading="Get in touch">
+        <Typography paragraph>
+          Whether it be a quick coffee chat or a new opportunity, don't be
+          afraid to get in touch using the form below. Your submission will
+          automatically be sent to my email.
+        </Typography>
+        <Typography paragraph>
+          If you want a more likely quicker response, DM me on my{" "}
+          <a
+            href="https://twitter.com/_dean21"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Twitter
+          </a>{" "}
+          handle.
+        </Typography>
+      </Header>
+      <ContactForm />
     </Layout>
   )
 }

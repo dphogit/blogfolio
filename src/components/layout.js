@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { Container, makeStyles, Fade, Fab } from "@material-ui/core"
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
 
 import Navigation from "./navigation/navigation"
 import LoadingScreen from "./loading-screen/loading-screen"
 import ScrollTop from "./scroll-top/scroll-top"
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
+import Footer from "./footer/footer"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -49,6 +50,7 @@ const Layout = props => {
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
+      <Footer />
     </Container>
   )
 }

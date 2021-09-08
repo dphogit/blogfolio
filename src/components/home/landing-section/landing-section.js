@@ -1,17 +1,11 @@
 import React from "react"
 
-import {
-  Grid,
-  Typography,
-  Grow,
-  Button,
-  Zoom,
-  IconButton,
-} from "@material-ui/core"
-import { Link } from "gatsby"
+import { Grid, Typography, Grow, Zoom, IconButton } from "@material-ui/core"
+
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown"
 
 import useStyles from "./styles"
+import LinkButton from "../../link-button/link-button"
 
 const LandingSection = () => {
   const classes = useStyles()
@@ -52,9 +46,7 @@ const LandingSection = () => {
                 <strong>Developer</strong> at the University of Auckland, New
                 Zealand.
               </Typography>
-              <Link to="/contact">
-                <Button variant="outlined">Contact Me</Button>
-              </Link>
+              <LinkButton navigateTo="/contact">Contact Me</LinkButton>
             </div>
           </Grow>
         </Grid>
