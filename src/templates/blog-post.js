@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Typography from "@material-ui/core/Typography"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
-import { MARKS, BLOCKS } from "@contentful/rich-text-types"
+import { MARKS, BLOCKS, INLINES } from "@contentful/rich-text-types"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
@@ -60,6 +60,11 @@ const BlogPost = props => {
         <div className={classes.blogImageWrapper}>
           <img src={node.data.target.fluid.src} alt={node.data.target.title} />
         </div>
+      ),
+      [INLINES.HYPERLINK]: node => (
+        <a href={node.data.uri} target="_blank" rel="noreferrer">
+          {node.content[0].value}
+        </a>
       ),
     },
   }

@@ -84,6 +84,17 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "1.375rem",
       },
     },
+
+    "& a": {
+      textDecoration: "none",
+      fontWeight: "bold",
+      color: theme.palette.primary.light,
+    },
+
+    "& a:hover": {
+      textDecoration: "underline",
+      textUnderlineOffset: "0.25rem",
+    },
   },
 
   blogImageWrapper: {
