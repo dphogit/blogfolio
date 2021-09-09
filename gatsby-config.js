@@ -1,7 +1,22 @@
 module.exports = {
   plugins: [
+    "gatsby-plugin-top-layout",
+    {
+      resolve: "gatsby-plugin-material-ui",
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "src",
+        path: `${__dirname}/src/`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-material-ui`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

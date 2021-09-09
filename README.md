@@ -1,7 +1,8 @@
 # Dean Phommahaxay Portfolio Website
 
-Powered By Gatsby and Netlify
-https://deanphommahaxay.netlify.app/
+Powered By Gatsby and Netlify:
+
+<https://deanphommahaxay.netlify.app/>
 
 Contact Me:
 

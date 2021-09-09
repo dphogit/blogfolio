@@ -1,9 +1,10 @@
 import React from "react"
-import { Button, TextField } from "@material-ui/core"
+import Button from "@material-ui/core/Button"
 import { Formik } from "formik"
 import * as Yup from "yup"
 import useStyles from "./styles"
 import { navigate } from "gatsby-link"
+import InputField from "./input-field/input-field"
 
 const initialForm = { name: "", email: "", message: "" }
 
@@ -55,56 +56,21 @@ const ContactForm = () => {
           method="POST"
           name="contact"
           netlify-honeypot="bot-field"
+          className={classes.contactForm}
         >
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
-          <TextField
-            id="name"
-            name="name"
-            label="Name"
-            variant="outlined"
-            type="text"
-            {...formik.getFieldProps("name")}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name}
-            className={classes.textField}
-          />
 
-          <TextField
-            id="email"
-            name="email"
-            label="Email"
-            variant="outlined"
-            type="email"
-            {...formik.getFieldProps("email")}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
-            className={classes.textField}
-          />
-
-          <TextField
-            id="message"
-            name="message"
-            label="Message"
-            variant="outlined"
-            {...formik.getFieldProps("message")}
-            multiline
-            rows={4}
-            error={formik.touched.message && Boolean(formik.errors.message)}
-            helperText={formik.touched.message && formik.errors.message}
-            className={classes.textField}
-          />
+          <InputField formik={formik} field="name" type="text" />
+          <InputField formik={formik} field="email" type="email" />
+          <InputField formik={formik} field="message" type="multiline" />
 
           <div className={classes.actions}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={formik.handleReset}
-            >
+            <Button variant="contained" onClick={formik.handleReset}>
               Reset
             </Button>
             <Button type="submit" variant="contained" color="primary">
-              Submit
+              Send
             </Button>
           </div>
         </form>

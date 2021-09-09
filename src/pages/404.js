@@ -1,28 +1,12 @@
 import React from "react"
-import { Typography, makeStyles, Button, Container } from "@material-ui/core"
-import { Link } from "gatsby"
+import Typography from "@material-ui/core/Typography"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
+import Header from "../components/header/header"
+import LinkButton from "../components/link-button/link-button"
 
-const useStyles = makeStyles({
-  title: {
-    fontFamily: "Open Sans, sans-serif",
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-
-  link: {
-    margin: "auto",
-    marginTop: "1rem",
-    display: "flex",
-    justifyContent: "center",
-
-    "& a": {
-      textDecoration: "none",
-    },
-  },
-})
+import useStyles from "../page-styles/404"
 
 const NotFoundPage = () => {
   const classes = useStyles()
@@ -30,18 +14,15 @@ const NotFoundPage = () => {
   return (
     <Layout>
       <Head page="404 Not Found" />
-      <Container maxWidth="sm">
-        <Typography variant="h4" className={classes.title}>
-          404 Page Not Found!
-        </Typography>
-        <div className={classes.link}>
-          <Link to="/">
-            <Button variant="contained" color="primary">
-              Head Home
-            </Button>
-          </Link>
-        </div>
-      </Container>
+      <div className={classes.notFoundWrapper}>
+        <Header heading="Oh oh... page not found">
+          <Typography paragraph>
+            You’ve stumbled into lost territory. Let’s take you back to
+            somewehere familiar!
+          </Typography>
+        </Header>
+        <LinkButton navigateTo="/">Home Page</LinkButton>
+      </div>
     </Layout>
   )
 }

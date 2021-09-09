@@ -19,7 +19,7 @@ const ScrollTop = ({ children, window }) => {
 
   const handleClick = event => {
     const anchor = (event.target.ownerDocument || document).querySelector(
-      "#nav-bar"
+      "#navigation"
     )
 
     if (anchor) {
